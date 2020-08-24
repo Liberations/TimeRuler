@@ -2,8 +2,10 @@
 
 [![](https://jitpack.io/v/Liberations/TimeRuler.svg)](https://jitpack.io/#Liberations/TimeRuler)
 
-可以缩放平移的时间刻度尺，方便自定义UI需求
-![效果图](https://github.com/Liberations/TimeRuler/raw/master/pic/view.gif)
+可以缩放平移的时间刻度尺，方便自定义UI需求。仿萤石云历史录像时间轴
+
+## 效果:
+![效果图](https://github.com/Liberations/TimeRuler/raw/master/pic/pic1.jpg)
 
 Add it to your build.gradle with:
 ```gradle
@@ -94,3 +96,4 @@ dependencies {
             }
         })
 ```
+## 更多方法参照Demo
