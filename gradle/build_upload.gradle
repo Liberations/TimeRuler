@@ -7,7 +7,7 @@ signing {
 }
 
 group = "cn.kubi"
-archivesBaseName = "jiaozivideoplayer"
+archivesBaseName = "scaleBar"
 version = "1.0"
 
 uploadArchives {
@@ -49,26 +49,5 @@ uploadArchives {
     }
 }
 
-task androidJavadocs(type: Javadoc) {
-    source = android.sourceSets.main.java.srcDirs
-    options {
-        encoding = "UTF-8"
-    }
-    classpath += project.files(android.getBootClasspath().join(File.pathSeparator))
-}
 
-task androidJavadocsJar(type: Jar, dependsOn: androidJavadocs) {
-    classifier = 'javadoc'
-    from androidJavadocs.destinationDir
-}
-
-task androidSourcesJar(type: Jar) {
-    classifier = 'sources'
-    from android.sourceSets.main.java.srcDirs
-}
-
-artifacts {
-    archives androidSourcesJar
-    archives androidJavadocsJar
-}
 
