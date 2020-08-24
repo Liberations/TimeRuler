@@ -46,8 +46,8 @@ dependencies {
 |colorScaleBackground|color,reference|颜色区域背景色|
 |cursorBackgroundColor|color，reference|游标背景色|
 |drawCursorContent|boolean|是否绘制游标内容|
-|tickValueSize|dimension|reference|刻度值文字大小|
-|videoAreaOffset|dimension|reference|绘制颜色区域相对于顶部的偏移量|
+|tickValueSize|dimension，reference|刻度值文字大小|
+|videoAreaOffset|dimension，reference|绘制颜色区域相对于顶部的偏移量|
 |videoAreaHeight|dimension,reference|绘制颜色区域的高度|
 |tickValueColor|color,reference|刻度值颜色|
 
