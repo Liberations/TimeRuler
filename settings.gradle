@@ -1,0 +1,3 @@
+include ':TimeRuler'
+include ':app'
+rootProject.name = "TimeRuleViewDemo"

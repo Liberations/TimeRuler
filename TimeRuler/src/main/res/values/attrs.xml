@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="BaseScaleBar">
+        <!--关键刻度高度-->
+        <attr name="keyTickHeight" format="dimension|reference" />
+        <!--文字偏移-->
+        <attr name="tickValueOffset" format="dimension|reference" />
+        <!--普通刻度与关键刻度比率-->
+        <attr name="normalTickRatio" format="float" />
+        <!--游标相对view width的位置  0～ 1 -->
+        <attr name="cursorPosition" format="float" />
+        <!--刻度尺横线相对view height的位置 0~1-->
+        <attr name="baselinePosition" format="float" />
+        <!--刻度线颜色-->
+        <attr name="tickColor" format="color|reference" />
+        <!--是否显示刻度横线-->
+        <attr name="showTickLine" format="boolean" />
+        <!--是否显示游标线-->
+        <attr name="showCursorLine" format="boolean" />
+        <!-- 是否显示刻度值-->
+        <attr name="showTickValue" format="boolean" />
+        <!-- 刻度线开口方向-->
+        <attr name="tickDirectionUp" format="boolean"/>
+        <!--游标线颜色-->
+        <attr name="cursorLineColor" format="color|reference" />
+        <!--刻度值最大规格(字体大小)-->
+        <attr name="maxScaleValueSize" format="color|reference" />
+    </declare-styleable>
+
+    <declare-styleable name="TimeRulerBar">
+        <!--刻度值颜色-->
+        <attr name="tickValueColor" format="color|reference" />
+        <!--刻度时间轴高度-->
+        <attr name="videoAreaHeight" format="dimension|reference" />
+        <!--刻度时间轴偏移量-->
+        <attr name="videoAreaOffset" format="dimension|reference" />
+        <!--刻度值大小-->
+        <attr name="tickValueSize" format="dimension|reference" />
+        <!--是否绘制游标-->
+        <attr name="drawCursorContent" format="boolean" />
+        <!--游标背景颜色-->
+        <attr name="cursorBackgroundColor" format="color|reference" />
+        <!--游标值大小-->
+        <attr name="cursorValueSize" format="dimension|reference" />
+        <!--颜色刻度尺背景-->
+        <attr name="colorScaleBackground" format="color|reference" />
+    </declare-styleable>
+</resources>

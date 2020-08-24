@@ -1,0 +1,34 @@
+// 1.maven-插件
+apply plugin: 'maven'
+// 2.maven-信息
+ext {// ext is a gradle closure allowing the declaration of global properties
+    PUBLISH_GROUP_ID = 'com.kubi.timeruler'
+    PUBLISH_ARTIFACT_ID = 'scaleBar'
+    PUBLISH_VERSION = "1.0"
+}
+// 3.maven-路径
+uploadArchives {
+    repositories.mavenDeployer {
+        //Maven仓库本地路径（可以自己新建文件夹，复制链接过来）
+        //注意”file://“ + 路径，有三个斜杠，别漏了
+        repository(url: uri('../repo')) //定义本地maven仓库的地址
+
+        pom.project {
+            groupId project.PUBLISH_GROUP_ID
+            artifactId project.PUBLISH_ARTIFACT_ID
+            version project.PUBLISH_VERSION
+        }
+    }
+}
+
+//以下代码会生成 jar 包源文件，如果是不开源码，请不要输入这段
+//aar包内包含注释
+/*
+task androidSourcesJar(type: Jar) {
+    classifier = 'sources'
+    from android.sourceSets.main.java.sourceFiles
+}
+
+artifacts {
+    archives androidSourcesJar
+}*/
