@@ -5,7 +5,7 @@
 可以缩放平移的时间刻度尺，方便自定义UI需求。仿萤石云历史录像时间轴
 
 ## 效果:
-<a href="https://gitee.com/FIUI/time-rule-view-demo/raw/master/pic/pic1.jpg" target="_blank"><p align="center"><img src="https://gitee.com/FIUI/time-rule-view-demo/raw/master/pic/pic1.jpg" alt="timeBar"></p></a>
+<a href="https://gitee.com/FIUI/time-rule-view-demo/raw/master/pic/test.jpg" target="_blank"><p align="center"><img src="https://gitee.com/FIUI/time-rule-view-demo/raw/master/pic/test.jpg" alt="timeBar"></p></a>
 
 Add it to your build.gradle with:
 ```gradle
