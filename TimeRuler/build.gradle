@@ -3,6 +3,10 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 //aar打包
 apply from: 'maven-release-aar.gradle'
+//apply plugin: 'com.github.dcendents.android-maven'
+//group='com.github.fiui'
+//version = '1.0'
+apply from: '../gradle/build_upload.gradle'
 
 android {
     compileSdkVersion 29

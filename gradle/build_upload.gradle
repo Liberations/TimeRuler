@@ -1,0 +1,74 @@
+apply plugin: 'maven'
+apply plugin: 'signing'
+
+signing {
+    required { false }
+    sign configurations.archives
+}
+
+group = "cn.kubi"
+archivesBaseName = "jiaozivideoplayer"
+version = "1.0"
+
+uploadArchives {
+    repositories {
+        mavenDeployer {
+            beforeDeployment { MavenDeployment deployment -> signing.signPom(deployment) }
+
+            repository(url: uri('../repo'))
+
+            pom.project {
+                name 'scaleBar'
+                packaging 'aar'
+                // optionally artifactId can be defined here
+                description 'android scaleBar 时间刻度尺 萤石云刻度尺 历史回放'
+                url 'https://github.com/Liberations/TimeRuler'
+
+                scm {
+                    connection 'https://github.com/Liberations/TimeRuler'
+                    developerConnection 'https://github.com/Liberations/TimeRuler'
+                    url 'https://github.com/Liberations/TimeRuler'
+                }
+
+                licenses {
+                    license {
+                        name 'MIT'
+                        url 'http://mit-license.org/'
+                    }
+                }
+
+                developers {
+                    developer {
+                        id 'Liberations'
+                        name 'Liberations'
+                        email '1487098940@qq.com'
+                    }
+                }
+            }
+        }
+    }
+}
+
+task androidJavadocs(type: Javadoc) {
+    source = android.sourceSets.main.java.srcDirs
+    options {
+        encoding = "UTF-8"
+    }
+    classpath += project.files(android.getBootClasspath().join(File.pathSeparator))
+}
+
+task androidJavadocsJar(type: Jar, dependsOn: androidJavadocs) {
+    classifier = 'javadoc'
+    from androidJavadocs.destinationDir
+}
+
+task androidSourcesJar(type: Jar) {
+    classifier = 'sources'
+    from android.sourceSets.main.java.srcDirs
+}
+
+artifacts {
+    archives androidSourcesJar
+    archives androidJavadocsJar
+}
+
