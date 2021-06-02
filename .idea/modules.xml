@@ -2,9 +2,9 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/TimeRuleViewDemo.iml" filepath="$PROJECT_DIR$/.idea/modules/TimeRuleViewDemo.iml" group="TimeRuleViewDemo" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/TimeRuler/TimeRuler.iml" filepath="$PROJECT_DIR$/.idea/modules/TimeRuler/TimeRuler.iml" group="TimeRuleViewDemo/TimeRuler" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/app.iml" group="TimeRuleViewDemo/app" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/TimeRuleViewDemo.iml" filepath="$PROJECT_DIR$/.idea/modules/TimeRuleViewDemo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/TimeRuler/TimeRuleViewDemo.TimeRuler.iml" filepath="$PROJECT_DIR$/.idea/modules/TimeRuler/TimeRuleViewDemo.TimeRuler.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/TimeRuleViewDemo.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/TimeRuleViewDemo.app.iml" />
     </modules>
   </component>
 </project>

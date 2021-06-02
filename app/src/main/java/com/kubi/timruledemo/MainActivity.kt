@@ -11,6 +11,7 @@ import java.util.*
 
 class MainActivity : AppCompatActivity() {
     val cursorDateFormat = SimpleDateFormat("MM月dd日 HH:mm:ss")
+    var nowTime = 1
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -86,6 +87,11 @@ class MainActivity : AppCompatActivity() {
         btnShowCursor.setOnClickListener {
             btnShowCursor.isSelected = !btnShowCursor.isSelected
             timeBar.setShowCursor(btnShowCursor.isSelected);
+        }
+
+        btnPlay.setOnClickListener {
+            nowTime++
+            timeBar.setCursorValue(System.currentTimeMillis()+1000*nowTime*60)
         }
         setData()
 
