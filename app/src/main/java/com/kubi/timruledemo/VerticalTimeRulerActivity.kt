@@ -1,22 +1,22 @@
 package com.kubi.timruledemo
 
-import android.content.Intent
 import android.os.Bundle
 import android.widget.SeekBar
 import androidx.appcompat.app.AppCompatActivity
-import com.kubi.timeruler.BaseScaleBar
-import com.kubi.timeruler.TimeRulerBar
-import com.kubi.timruledemo.databinding.ActivityMainBinding
+import com.kubi.timeruler.BaseScaleBarVertical
+import com.kubi.timeruler.TimeRulerBarVertical
+import com.kubi.timruledemo.databinding.ActivityVerticalTimeRulerBinding
 import java.text.SimpleDateFormat
 import java.util.*
 
-class MainActivity : AppCompatActivity() {
-    lateinit var binding: ActivityMainBinding
+class VerticalTimeRulerActivity : AppCompatActivity() {
+    lateinit var binding: ActivityVerticalTimeRulerBinding
     val cursorDateFormat = SimpleDateFormat("MM月dd日 HH:mm:ss")
     var nowTime = 1
+    
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityMainBinding.inflate(layoutInflater)
+        binding = ActivityVerticalTimeRulerBinding.inflate(layoutInflater)
         setContentView(binding.root)
         initTimeBar()
     }
@@ -38,18 +38,18 @@ class MainActivity : AppCompatActivity() {
         calendar[Calendar.MILLISECOND] = 999
         var endTime = calendar.timeInMillis
 
-        binding.timeBar.setRange(startTime, endTime)
-        binding.timeBar.setMode(TimeRulerBar.MODE_UINT_30_MIN)
-        binding.timeBar.setCursorValue(System.currentTimeMillis())
+        binding.timeBarVertical.setRange(startTime, endTime)
+        binding.timeBarVertical.setMode(TimeRulerBarVertical.MODE_UINT_30_MIN)
+        binding.timeBarVertical.setCursorValue(System.currentTimeMillis())
 
-        binding.timeBar.setOnCursorListener(object : BaseScaleBar.OnCursorListener {
+        binding.timeBarVertical.setOnCursorListener(object : BaseScaleBarVertical.OnCursorListener {
             override fun onStartTrackingTouch(cursorValue: Long) {
 
             }
 
             override fun onProgressChanged(cursorValue: Long, fromeUser: Boolean) {
                 //监听时间戳变化
-                binding.tvData.text = cursorDateFormat.format(Date(cursorValue))
+                binding.tvDataVertical.text = cursorDateFormat.format(Date(cursorValue))
             }
 
             override fun onStopTrackingTouch(cursorValue: Long) {
@@ -57,9 +57,9 @@ class MainActivity : AppCompatActivity() {
             }
         })
 
-        binding.seekBar.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
+        binding.seekBarVertical.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
             override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
-                binding.timeBar.setScale(progress.toFloat())
+                binding.timeBarVertical.setScale(progress.toFloat())
             }
 
             override fun onStartTrackingTouch(seekBar: SeekBar?) {
@@ -70,9 +70,9 @@ class MainActivity : AppCompatActivity() {
 
         })
 
-        binding.seekAreaOffset.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
+        binding.seekAreaOffsetVertical.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
             override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
-                binding.timeBar.setVideoAreaOffset(progress)
+                binding.timeBarVertical.setVideoAreaOffset(progress)
             }
 
             override fun onStartTrackingTouch(seekBar: SeekBar?) {
@@ -83,25 +83,20 @@ class MainActivity : AppCompatActivity() {
 
         })
 
-        binding.btnDir.setOnClickListener {
-            binding.btnDir.isSelected = !binding.btnDir.isSelected
-            binding.timeBar.setTickDirection(binding.btnDir.isSelected)
+        binding.btnDirVertical.setOnClickListener {
+            binding.btnDirVertical.isSelected = !binding.btnDirVertical.isSelected
+            binding.timeBarVertical.setTickDirection(binding.btnDirVertical.isSelected)
         }
 
-        binding.btnShowCursor.setOnClickListener {
-            binding.btnShowCursor.isSelected = !binding.btnShowCursor.isSelected
-            binding.timeBar.setShowCursor(binding.btnShowCursor.isSelected);
+        binding.btnShowCursorVertical.setOnClickListener {
+            binding.btnShowCursorVertical.isSelected = !binding.btnShowCursorVertical.isSelected
+            binding.timeBarVertical.setShowCursor(binding.btnShowCursorVertical.isSelected);
         }
 
-        binding.btnPlay.setOnClickListener {
+        binding.btnPlayVertical.setOnClickListener {
             nowTime++
-            binding.timeBar.setCursorValue(System.currentTimeMillis() + 1000 * nowTime * 60)
+            binding.timeBarVertical.setCursorValue(System.currentTimeMillis() + 1000 * nowTime * 60)
         }
-        
-        binding.btnVerticalDemo.setOnClickListener {
-            startActivity(Intent(this, VerticalTimeRulerActivity::class.java))
-        }
-        
         setData()
 
     }
@@ -115,6 +110,6 @@ class MainActivity : AppCompatActivity() {
             testTime += i * 15 * 60 * 1000
         }
         val timeBean = TimeBean(videos)
-        binding.timeBar.setColorScale(timeBean)
+        binding.timeBarVertical.setColorScale(timeBean)
     }
 }

@@ -45,4 +45,50 @@
         <!--颜色刻度尺背景-->
         <attr name="colorScaleBackground" format="color|reference" />
     </declare-styleable>
+
+    <declare-styleable name="BaseScaleBarVertical">
+        <!--关键刻度宽度-->
+        <attr name="keyTickWidthVertical" format="dimension|reference" />
+        <!--文字偏移-->
+        <attr name="tickValueOffsetVertical" format="dimension|reference" />
+        <!--普通刻度与关键刻度比率-->
+        <attr name="normalTickRatioVertical" format="float" />
+        <!--游标相对view height的位置  0～ 1 -->
+        <attr name="cursorPositionVertical" format="float" />
+        <!--刻度尺纵线相对view width的位置 0~1-->
+        <attr name="baselinePositionVertical" format="float" />
+        <!--刻度线颜色-->
+        <attr name="tickColorVertical" format="color|reference" />
+        <!--是否显示刻度纵线-->
+        <attr name="showTickLineVertical" format="boolean" />
+        <!--是否显示游标线-->
+        <attr name="showCursorLineVertical" format="boolean" />
+        <!-- 是否显示刻度值-->
+        <attr name="showTickValueVertical" format="boolean" />
+        <!-- 刻度线开口方向-->
+        <attr name="tickDirectionLeftVertical" format="boolean"/>
+        <!--游标线颜色-->
+        <attr name="cursorLineColorVertical" format="color|reference" />
+        <!--刻度值最大规格(字体大小)-->
+        <attr name="maxScaleValueSizeVertical" format="color|reference" />
+    </declare-styleable>
+
+    <declare-styleable name="TimeRulerBarVertical">
+        <!--刻度值颜色-->
+        <attr name="tickValueColorVertical" format="color|reference" />
+        <!--刻度时间轴宽度-->
+        <attr name="videoAreaWidthVertical" format="dimension|reference" />
+        <!--刻度时间轴偏移量-->
+        <attr name="videoAreaOffsetVertical" format="dimension|reference" />
+        <!--刻度值大小-->
+        <attr name="tickValueSizeVertical" format="dimension|reference" />
+        <!--是否绘制游标-->
+        <attr name="drawCursorContentVertical" format="boolean" />
+        <!--游标背景颜色-->
+        <attr name="cursorBackgroundColorVertical" format="color|reference" />
+        <!--游标值大小-->
+        <attr name="cursorValueSizeVertical" format="dimension|reference" />
+        <!--颜色刻度尺背景-->
+        <attr name="colorScaleBackgroundVertical" format="color|reference" />
+    </declare-styleable>
 </resources>
