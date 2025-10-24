@@ -5,16 +5,18 @@ import android.widget.SeekBar
 import androidx.appcompat.app.AppCompatActivity
 import com.kubi.timeruler.BaseScaleBar
 import com.kubi.timeruler.TimeRulerBar
-import kotlinx.android.synthetic.main.activity_main.*
+import com.kubi.timruledemo.databinding.ActivityMainBinding
 import java.text.SimpleDateFormat
 import java.util.*
 
 class MainActivity : AppCompatActivity() {
+    lateinit var binding: ActivityMainBinding
     val cursorDateFormat = SimpleDateFormat("MM月dd日 HH:mm:ss")
     var nowTime = 1
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
         initTimeBar()
     }
 
@@ -35,17 +37,18 @@ class MainActivity : AppCompatActivity() {
         calendar[Calendar.MILLISECOND] = 999
         var endTime = calendar.timeInMillis
 
-        timeBar.setRange(startTime, endTime)
-        timeBar.setMode(TimeRulerBar.MODE_UINT_30_MIN)
-        timeBar.setCursorValue(System.currentTimeMillis())
+        binding.timeBar.setRange(startTime, endTime)
+        binding.timeBar.setMode(TimeRulerBar.MODE_UINT_30_MIN)
+        binding.timeBar.setCursorValue(System.currentTimeMillis())
 
-        timeBar.setOnCursorListener(object : BaseScaleBar.OnCursorListener {
+        binding.timeBar.setOnCursorListener(object : BaseScaleBar.OnCursorListener {
             override fun onStartTrackingTouch(cursorValue: Long) {
 
             }
 
-            override fun onProgressChanged(cursorValue: Long,fromeUser:Boolean) {
-                tvData.text = cursorDateFormat.format(Date(cursorValue))
+            override fun onProgressChanged(cursorValue: Long, fromeUser: Boolean) {
+                //监听时间戳变化
+                binding.tvData.text = cursorDateFormat.format(Date(cursorValue))
             }
 
             override fun onStopTrackingTouch(cursorValue: Long) {
@@ -53,9 +56,9 @@ class MainActivity : AppCompatActivity() {
             }
         })
 
-        seekBar.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
+        binding.seekBar.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
             override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
-                timeBar.setScale(progress.toFloat())
+                binding.timeBar.setScale(progress.toFloat())
             }
 
             override fun onStartTrackingTouch(seekBar: SeekBar?) {
@@ -66,9 +69,9 @@ class MainActivity : AppCompatActivity() {
 
         })
 
-        seekAreaOffset.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
+        binding.seekAreaOffset.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
             override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
-                timeBar.setVideoAreaOffset(progress)
+                binding.timeBar.setVideoAreaOffset(progress)
             }
 
             override fun onStartTrackingTouch(seekBar: SeekBar?) {
@@ -79,19 +82,19 @@ class MainActivity : AppCompatActivity() {
 
         })
 
-        btnDir.setOnClickListener {
-            btnDir.isSelected = !btnDir.isSelected
-            timeBar.setTickDirection(btnDir.isSelected)
+        binding.btnDir.setOnClickListener {
+            binding.btnDir.isSelected = !binding.btnDir.isSelected
+            binding.timeBar.setTickDirection(binding.btnDir.isSelected)
         }
 
-        btnShowCursor.setOnClickListener {
-            btnShowCursor.isSelected = !btnShowCursor.isSelected
-            timeBar.setShowCursor(btnShowCursor.isSelected);
+        binding.btnShowCursor.setOnClickListener {
+            binding.btnShowCursor.isSelected = !binding.btnShowCursor.isSelected
+            binding.timeBar.setShowCursor(binding.btnShowCursor.isSelected);
         }
 
-        btnPlay.setOnClickListener {
+        binding.btnPlay.setOnClickListener {
             nowTime++
-            timeBar.setCursorValue(System.currentTimeMillis()+1000*nowTime*60)
+            binding.timeBar.setCursorValue(System.currentTimeMillis() + 1000 * nowTime * 60)
         }
         setData()
 
@@ -106,6 +109,6 @@ class MainActivity : AppCompatActivity() {
             testTime += i * 15 * 60 * 1000
         }
         val timeBean = TimeBean(videos)
-        timeBar.setColorScale(timeBean)
+        binding.timeBar.setColorScale(timeBean)
     }
 }
