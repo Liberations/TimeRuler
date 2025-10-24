@@ -33,7 +33,7 @@ public class BaseScaleBar extends View implements ScaleGestureDetector.OnScaleGe
     /* 缩放比例*/
     private float mScaleRatio = 1.0f;
     /* 关键刻度高度*/
-    private float mKeyTickHeight ;
+    private float mKeyTickHeight;
     /* 刻度高度*/
     private float mTickHeight;
     /* 普通刻度线与关键刻度线的比*/
@@ -211,7 +211,7 @@ public class BaseScaleBar extends View implements ScaleGestureDetector.OnScaleGe
             return;
         }
         this.mCursorValue = cursorValue;
-        if (mOnCursorListener != null) mOnCursorListener.onProgressChanged(mCursorValue,false);
+        if (mOnCursorListener != null) mOnCursorListener.onProgressChanged(mCursorValue, false);
         invalidate();
     }
 
@@ -282,7 +282,7 @@ public class BaseScaleBar extends View implements ScaleGestureDetector.OnScaleGe
             onDrawTickPosition = leftNeighborPosition - mTickSpacing * i;
             if (tickDirectionUp) {
                 if ((onDrawTickValue - mScaleInfo.startValue) % mScaleInfo.keyScaleRange == 0) {
-                    canvas.drawLine(onDrawTickPosition, baselinePosition , onDrawTickPosition, baselinePosition- mKeyTickHeight, mScalePaint);
+                    canvas.drawLine(onDrawTickPosition, baselinePosition, onDrawTickPosition, baselinePosition - mKeyTickHeight, mScalePaint);
                     drawTickValue(canvas, onDrawTickPosition, baselinePosition - mKeyTickHeight, onDrawTickValue, true);
                 } else {
                     canvas.drawLine(onDrawTickPosition, baselinePosition - mTickHeight, onDrawTickPosition, baselinePosition, mScalePaint);
@@ -470,6 +470,7 @@ public class BaseScaleBar extends View implements ScaleGestureDetector.OnScaleGe
         Log.d(TAG, mScaleRatio + "onScale:mTickSpacing " + mTickSpacing);
         invalidate();
         lastScale = scale;
+        status = STATUS_NONE;
     }
 
     protected void onScale(ScaleMode info, float unitPixel) {
@@ -536,7 +537,7 @@ public class BaseScaleBar extends View implements ScaleGestureDetector.OnScaleGe
             result = false;
         }
         if (null != mOnCursorListener) {
-            mOnCursorListener.onProgressChanged(mCursorValue,true);
+            mOnCursorListener.onProgressChanged(mCursorValue, true);
         }
         invalidate();
         return result;
@@ -606,7 +607,7 @@ public class BaseScaleBar extends View implements ScaleGestureDetector.OnScaleGe
     public interface OnCursorListener {
         void onStartTrackingTouch(long cursorValue);
 
-        void onProgressChanged(long cursorValue,boolean isFromUser);
+        void onProgressChanged(long cursorValue, boolean isFromUser);
 
         void onStopTrackingTouch(long cursorValue);
     }
